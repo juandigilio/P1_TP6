@@ -14,6 +14,7 @@ Crossbowman::~Crossbowman()
 void Crossbowman::Attack(Soldier* soldiers[], int soldiersQnty)
 {
 	int toAttack;
+	bool posibleAttack = false;
 
 	if (stamin < 15.0f)
 	{
@@ -24,6 +25,17 @@ void Crossbowman::Attack(Soldier* soldiers[], int soldiersQnty)
 	{
 		stamin -= 15.0f;
 
+		for (int i = 0; i < soldiersQnty; i++)
+		{
+			if (!position)
+			{
+				if (abs(position - i) <= maxAttackRange && abs(position - i) >= minAttackRange)
+				{
+					posibleAttack = true;
+				}
+			}
+		}
+
 		do
 		{
 			toAttack = rand() % soldiersQnty;
@@ -32,25 +44,42 @@ void Crossbowman::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		cout << name << " attacks " << soldiers[toAttack]->GetName() << endl;
 
-		if (abs(position - toAttack) <= maxAttackRange && abs(position - toAttack) >= minAttackRange)
+		if (posibleAttack)
 		{
-			for (int i = 0; i < 2; i++)
+			if (abs(position - toAttack) <= maxAttackRange && abs(position - toAttack) >= minAttackRange)
 			{
-				if ((rand() % 101) < hittingChances)
+				for (int i = 0; i < 2; i++)
 				{
-					soldiers[toAttack]->GetDamage(attack);
+					if ((rand() % 101) < hittingChances)
+					{
+						soldiers[toAttack]->GetDamage(attack);
 
-					cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+						cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+					}
+					else
+					{
+						cout << "Miss shot, sorry boy..." << endl << endl;
+					}
 				}
-				else
-				{
-					cout << "Miss shot, sorry boy..." << endl << endl;
-				}
+			}
+			else
+			{
+				cout << "Miss shot, the target was out of range" << endl << endl;
 			}
 		}
 		else
 		{
-			cout << "Miss shot, the target was out of range" << endl << endl;
+			if (rand() % 101 < 50)
+			{
+				soldiers[toAttack]->GetDamage(attack);
+
+				cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+			}
+			else
+			{
+				cout << "Miss shot, the target was out of range" << endl << endl;
+			}
 		}
+		
 	}
 }

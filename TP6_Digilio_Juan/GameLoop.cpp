@@ -44,8 +44,6 @@ GameLoop::~GameLoop()
 {
 	system("cls");
 
-	cout << "Game finished..." << endl;
-
 	for (int i = 0; i < 2; i++)
 	{
 		if (soldiers[i] != nullptr)
@@ -61,6 +59,8 @@ GameLoop::~GameLoop()
 			delete soldiers[i];
 		}
 	}
+
+	cout << "Game finished..." << endl;
 }
 
 void GameLoop::Play()

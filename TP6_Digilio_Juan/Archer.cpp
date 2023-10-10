@@ -14,6 +14,7 @@ Archer::~Archer()
 void Archer::Attack(Soldier* soldiers[], int soldiersQnty)
 {
 	int toAttack;
+	bool posibleAttack = false;
 
 	if (stamin < 10.0f)
 	{
@@ -24,6 +25,17 @@ void Archer::Attack(Soldier* soldiers[], int soldiersQnty)
 	{
 		stamin -= 10.0f;
 
+		for (int i = 0; i < soldiersQnty; i++)
+		{
+			if (!position)
+			{
+				if (abs(position - i) <= maxAttackRange && abs(position - i) >= minAttackRange)
+				{
+					posibleAttack = true;
+				}
+			}
+		}
+
 		do
 		{
 			toAttack = rand() % soldiersQnty;
@@ -32,15 +44,31 @@ void Archer::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		cout << name << " attacks " << soldiers[toAttack]->GetName() << endl;
 
-		if (abs(position - toAttack) <= maxAttackRange && abs(position - toAttack) >= minAttackRange)
-		{			
-			soldiers[toAttack]->GetDamage(attack);
+		if (posibleAttack)
+		{
+			if (abs(position - toAttack) <= maxAttackRange && abs(position - toAttack) >= minAttackRange)
+			{
+				soldiers[toAttack]->GetDamage(attack);
 
-			cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+				cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+			}
+			else
+			{
+				cout << "Miss shot, the target was out of range" << endl << endl;
+			}
 		}
 		else
 		{
-			cout << "Miss shot, the target was out of range" << endl << endl;
+			if (rand() % 101 < 50)
+			{
+				soldiers[toAttack]->GetDamage(attack);
+
+				cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+			}
+			else
+			{
+				cout << "Miss shot, the target was out of range" << endl << endl;
+			}
 		}
 	}
 }
