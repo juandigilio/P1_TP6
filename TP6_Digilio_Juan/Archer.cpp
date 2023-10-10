@@ -2,6 +2,7 @@
 
 Archer::Archer(float attack, int minAttackRange, int maxAttackRange) : Ranged(attack, minAttackRange, maxAttackRange)
 {
+	name = "Genghis Khan the archer";
 	cout << "I'm Genghis Khan, first khagan of the Mongol Empire" << endl;
 }
 
@@ -29,13 +30,13 @@ void Archer::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		} while (toAttack == position);
 
-		cout << "Soldier " << position << " attacks soldier " << toAttack << endl;
+		cout << name << " attacks " << soldiers[toAttack]->GetName() << endl;
 
-		if (abs(position - toAttack) <= attackRatio)
-		{
+		if (abs(position - toAttack) <= maxAttackRange && abs(position - toAttack) >= minAttackRange)
+		{			
 			soldiers[toAttack]->GetDamage(attack);
 
-			cout << "Attack landed with " << attack << " points of damage, soldier " << toAttack << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+			cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
 		}
 		else
 		{

@@ -3,7 +3,7 @@
 #include "Ranged.h"
 
 
-class Archer : Ranged
+class Archer : public Ranged
 {
 public:
 

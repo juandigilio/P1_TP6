@@ -13,6 +13,8 @@ protected:
 	float maxStamin;
 	float attack;
 	int position;
+	bool isAlive;
+	string name;
 
 
 public:
@@ -24,8 +26,10 @@ public:
 	void SetPosition(int position) { this->position = position; }
 	int GetPosition() { return position; }
 	float GetHealth() { return health; }
+	bool IsAlive() { return isAlive; }
+	string GetName() { return name; }
 	void GetDamage(float attak);
 
-	virtual void Attack() = 0;
+	virtual void Attack(Soldier* soldiers[], int soldiersQnty) = 0;
 };
 

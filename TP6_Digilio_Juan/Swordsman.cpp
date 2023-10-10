@@ -3,12 +3,13 @@
 
 Swordsman::Swordsman(float attack, int attackRatio) : Melee(attack, attackRatio)
 {
-	cout << "I'm king Arthur, the man of the sword!";
+	name = "Arthur the swordsman";
+	cout << "I'm king Arthur, the man of the sword!" << endl;
 }
 
 Swordsman::~Swordsman()
 {
-	cout << "The sword became dull";
+	cout << "The sword became dull" << endl;
 }
 
 void Swordsman::Attack(Soldier* soldiers[], int soldiersQnty)
@@ -30,13 +31,13 @@ void Swordsman::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		} while (toAttack == position);
 
-		cout << "Soldier " << position << " attacks soldier " << toAttack << endl;
+		cout <<  name << " attacks " << soldiers[toAttack]->GetName() << endl;
 
 		if (abs(position - toAttack) <= attackRatio)
 		{
 			soldiers[toAttack]->GetDamage(attack);
 
-			cout << "Attack landed with " << attack << " points of damage, soldier " << toAttack << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
+			cout << "Attack landed with " << attack << " points of damage, " << soldiers[toAttack]->GetName() << " current life is " << soldiers[toAttack]->GetHealth() << endl << endl;
 		}
 		else
 		{

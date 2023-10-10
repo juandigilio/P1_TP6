@@ -4,10 +4,10 @@ Melee::Melee(float attack, int attackRatio) : Soldier(attack)
 {
 	this->attackRatio = attackRatio;
 
-	cout << "It's a melee one, tuf guy...";
+	cout << "It's a melee one, tuf guy..." << endl;
 }
 
 Melee::~Melee()
 {
-	cout << "Lo vimi tuf guy";
+	cout << "Tuf guy got soft..." << endl;
 }

@@ -3,7 +3,7 @@
 #include "Melee.h"
 
 
-class Lancer : Melee 
+class Lancer : public Melee 
 {
 public:
 

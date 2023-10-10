@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Archer.h" />
+    <ClInclude Include="Crossbowman.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Lancer.h" />
     <ClInclude Include="Melee.h" />
     <ClInclude Include="Ranged.h" />
@@ -148,7 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Archer.cpp" />
+    <ClCompile Include="Crossbowman.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Lancer.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Melee.cpp" />
     <ClCompile Include="Ranged.cpp" />
     <ClCompile Include="Soldier.cpp" />

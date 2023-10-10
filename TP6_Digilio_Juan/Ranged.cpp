@@ -5,10 +5,10 @@ Ranged::Ranged(float attack, int minAttackRange, int maxAttackRange) : Soldier(a
 	this->minAttackRange = minAttackRange;
 	this->maxAttackRange = maxAttackRange;
 
-	cout << "You are a chicken McFly";
+	cout << "It's a range soldier" << endl;
 }
 
 Ranged::~Ranged()
 {
-	cout << "Died as a coward";
+	cout << "Died as a coward" << endl;
 }

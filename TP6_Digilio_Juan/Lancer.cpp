@@ -2,7 +2,8 @@
 
 Lancer::Lancer(float attack, int attackRatio) : Melee(attack, attackRatio)
 {
-	cout << "I'm a Roman legionary, get ready to feel the power of my lance!" << endl;
+	name = "Leonidas the lancer";
+	cout << "I'm a Leonidas the Spartan, get ready to feel the power of my lance!" << endl;
 }
 
 Lancer::~Lancer()
@@ -29,7 +30,7 @@ void Lancer::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		} while (toAttack == position);
 
-		cout << "Soldier " << position << " attacks soldier " << toAttack << endl;
+		cout << name << " attacks " << soldiers[toAttack]->GetName() << endl;
 
 		if (abs(position - toAttack) <= attackRatio)
 		{
@@ -39,10 +40,22 @@ void Lancer::Attack(Soldier* soldiers[], int soldiersQnty)
 			{
 				for (int i = position - 1; i > toAttack - 1; i--)
 				{
-					soldiers[i]->GetDamage(attack / totalSoldiersToAttack);
+					float actualDamage = attack / totalSoldiersToAttack;
+					soldiers[i]->GetDamage(actualDamage);
 					totalSoldiersToAttack--;
 
-					cout << "Attack landed with " << attack << " points of damage, soldier " << i << " current life is " << soldiers[i]->GetHealth() << endl << endl;
+					cout << "Attack landed with " << actualDamage << " points of damage, " << soldiers[i]->GetName() << " current life is " << soldiers[i]->GetHealth() << endl << endl;
+				}
+			}
+			else
+			{
+				for (int i = position + 1; i < toAttack + 1; i++)
+				{
+					float actualDamage = attack / totalSoldiersToAttack;
+					soldiers[i]->GetDamage(actualDamage);
+					totalSoldiersToAttack--;
+
+					cout << "Attack landed with " << actualDamage << " points of damage, " << soldiers[i]->GetName() << " current life is " << soldiers[i]->GetHealth() << endl << endl;
 				}
 			}
 		}
