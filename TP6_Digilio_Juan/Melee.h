@@ -2,7 +2,7 @@
 
 #include "Soldier.h"
 
-class Melee : public Soldier
+class Melee abstract : public Soldier
 {
 protected:
 

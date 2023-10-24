@@ -3,7 +3,7 @@
 #include "Soldier.h"
 
 
-class Ranged : public Soldier
+class Ranged abstract : public Soldier
 {
 protected:
 

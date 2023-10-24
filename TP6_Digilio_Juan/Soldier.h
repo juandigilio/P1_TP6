@@ -4,8 +4,10 @@
 
 using namespace std;
 
-class Soldier
+class Soldier abstract
 {
+
+
 protected:
 
 	float health;

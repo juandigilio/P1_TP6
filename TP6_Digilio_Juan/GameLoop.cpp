@@ -6,8 +6,6 @@ GameLoop::GameLoop()
 
 	soldiersQnty = 10;
 
-	//soldiers[soldiersQnty];
-
 	for (int i = 0; i < soldiersQnty; i++)
 	{
 		switch (rand() % 4)
