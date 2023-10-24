@@ -64,5 +64,4 @@ void Lancer::Attack(Soldier* soldiers[], int soldiersQnty)
 			cout << "Miss shot, the target was out of range" << endl << endl;
 		}
 	}
-
 }

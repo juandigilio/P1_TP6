@@ -27,7 +27,7 @@ void Crossbowman::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		for (int i = 0; i < soldiersQnty; i++)
 		{
-			if (!position)
+			if (i != position)
 			{
 				if (abs(position - i) <= maxAttackRange && abs(position - i) >= minAttackRange)
 				{
@@ -69,7 +69,7 @@ void Crossbowman::Attack(Soldier* soldiers[], int soldiersQnty)
 		}
 		else
 		{
-			if (rand() % 101 < 50)
+			if (rand() % 101 < hittingChances)
 			{
 				soldiers[toAttack]->GetDamage(attack);
 

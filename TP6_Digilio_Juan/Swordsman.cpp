@@ -33,6 +33,7 @@ void Swordsman::Attack(Soldier* soldiers[], int soldiersQnty)
 
 		cout <<  name << " attacks " << soldiers[toAttack]->GetName() << endl;
 
+
 		if (abs(position - toAttack) <= attackRatio)
 		{
 			soldiers[toAttack]->GetDamage(attack);
